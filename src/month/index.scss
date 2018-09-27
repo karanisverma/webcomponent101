@@ -2,6 +2,9 @@
     width: 270px;
     h2 {
         text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: #2e2e2e;
     }
     .month-grid {
         padding: 10px;
@@ -21,12 +24,13 @@
     .days-containers{
         .day{
             // background-color: antiquewhite;
-            width: 35px;
-            height: 35px;
+            // width: 32px;
+            width: calc(100%/8);
+            height: 32px;
             display: inline-block;
             text-align:center;
             transition: 0.2s;
-            line-height: 34px;
+            line-height: 32px;
             &:hover{
                 color: white;
                 transition: 0.2s;
