@@ -32,6 +32,7 @@ class zcCalendar extends HTMLElement {
   setProps() {
     this.minDate = this.getAttribute('min-date');
     this.maxDate = this.getAttribute('max-date');
+    this.selectedDate = this.getAttribute('selected-date');
     this.minTime = this.getAttribute('min-time') || '00:00';
     this.maxTime = this.getAttribute('max-time') || '23:30';
     this.visibleMonthCount = this.getAttribute('visible-months') || 6;
