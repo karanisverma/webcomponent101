@@ -1,3 +1,4 @@
+<div class="month">
 <h2>${this.monthLabels[this.month]}  ${this.year}</h2>
 <div class="month-grid">
     <div class="weekdays-container">
@@ -8,4 +9,5 @@
     <div class="days-containers">
             ${repeat(this.dates, date=>html`<div class="day">${date}</div>`)}
     </div>
+</div>
 </div>

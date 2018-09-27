@@ -1,27 +1,37 @@
-.month-grid{
-    width:231px;
-.weekdays-container{
-    .weekdays{
-        .weekday{
-            width: 33px;
-            height: 33px;
-            display: inline-block;
+.month{
+    width: 275px;
+    h2 {
+        text-align: center;
+    }
+    .month-grid {
+        padding: 10px;
+    }
+    .weekdays-container{
+        .weekdays{
+            .weekday{
+                width: 35px;
+                height: 35px;
+                text-align: center;
+                display: inline-block;
+            }
         }
     }
-}
     .days-containers{
         .day{
-            background-color: antiquewhite;
+            // background-color: antiquewhite;
             width: 33px;
             height: 33px;
             display: inline-block;
             text-align:center;
+            transition: 0.2s;
+            line-height: 34px;
             &:hover{
-                color: red;
-                background: white;
+                color: white;
+                transition: 0.2s;
+                background: #B4D3A2;
                 cursor: pointer;
+                border-radius: 50px;
             }
         }
     }
-
 }

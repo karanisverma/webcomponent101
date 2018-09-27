@@ -1,7 +1,9 @@
 {
-  "watch":{
-    "build":{
-      "patterns":["src"],
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
       "extensions": "ejs,js,scss",
       "ignore": "./dist/*.js",
       "quiet": false
@@ -15,10 +17,11 @@
     "watch": "npm-watch"
   },
   "dependencies": {
-    "lit-html": "^0.11.4",
-    "rollup": "^0.66.2",
     "ejs": "^2.6.1",
-    "node-sass": "^4.9.2"
+    "lit-html": "^0.11.4",
+    "node-sass": "^4.9.2",
+    "npm-watch": "^0.4.0",
+    "rollup": "^0.66.2"
   },
   "publishConfig": {
     "access": "public"

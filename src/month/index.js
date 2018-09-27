@@ -30,7 +30,7 @@ class zcMonthCalendar extends HTMLElement {
 
     this.month = this.startMonth || this.today.getMonth();
     this.year  = this.startYear || this.today.getFullYear();
-    this.weekDaysShortLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    this.weekDaysShortLabels = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     this.monthLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.setProps = this.setProps.bind(this);
     this.firstDay = new Date(this.year, this.month, 1);
