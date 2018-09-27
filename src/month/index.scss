@@ -1,0 +1,27 @@
+.month-grid{
+    width:231px;
+.weekdays-container{
+    .weekdays{
+        .weekday{
+            width: 33px;
+            height: 33px;
+            display: inline-block;
+        }
+    }
+}
+    .days-containers{
+        .day{
+            background-color: antiquewhite;
+            width: 33px;
+            height: 33px;
+            display: inline-block;
+            text-align:center;
+            &:hover{
+                color: red;
+                background: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
