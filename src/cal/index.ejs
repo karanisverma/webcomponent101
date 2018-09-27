@@ -9,7 +9,7 @@
 <body>
     <div>
         ${repeat(this.months, (month, i)=>html`
-        <zc-month-calendar start-year="2020" start-month$="${i}"></zc-month-calendar>
+        <zc-month-calendar start-year$="${month.getFullYear()}" start-month$="${month.getMonth()}"></zc-month-calendar>
         `)} 
     </div>
 

@@ -12,15 +12,18 @@ class zcCalendar extends HTMLElement {
   constructor() {
     super();
     this.mon = "1";
+    this.today = new Date();
     this.setProps = this.setProps.bind(this);
   }
   setProps() {
     this.visibleMonthCount = this.getAttribute('visible-months') || 6;
     this.months =  Array.apply(null, { length: this.visibleMonthCount }).map((x, i) => {
-        return `<zc-month-calendar part=${i} start-year="2017" start-month=${i}></zc-month-calendar>`
+        var result = new Date(this.today);
+        result.setDate(1);
+        result.setMonth(i+this.today.getMonth())
+        return result
       })
     this.monthsTemplate = html`${this.months.join(' ')}`
-
   }
 
   get htmlTemplate () { 
