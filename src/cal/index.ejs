@@ -14,7 +14,10 @@
             on-date-tap= ${data => this.handleDateSelection(data)} 
             start-year$="${month.getFullYear()}" 
             start-month$="${month.getMonth()}"
-            selected-date$="${this.selectedDate}"></zc-month-calendar>
+            selected-date$="${this.selectedDate}"
+            min-date$="${this.minDate}"
+            max-date$="${this.maxDate}"
+            ></zc-month-calendar>
             `)}
         </div>
         <div class="time-wrapper">

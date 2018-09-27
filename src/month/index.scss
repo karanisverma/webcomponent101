@@ -1,5 +1,6 @@
 .month{
     width: 270px;
+    user-select: none;
     h2 {
         text-align: center;
         font-size: 18px;
@@ -44,6 +45,15 @@
                 background: #B4D3A2;
                 cursor: pointer;
                 border-radius: 50px;            
+            }
+            &.disabled{
+                color: #b9b9b9;
+                font-weight: 300;
+                cursor:not-allowed;
+                &:hover{
+                    background:white;
+                    color: #b9b9b9;
+                }
             }
         }
     }

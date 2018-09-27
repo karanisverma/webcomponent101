@@ -14,7 +14,9 @@ class zcCalendar extends HTMLElement {
     this.mon = "1";
     this.today = new Date();
     this.setProps = this.setProps.bind(this);
-    this.selectedDate = 1;
+    this.selectedDate = '11/10/2018';
+    this.minDate = '10/10/2018';
+    this.maxDate = '11/10/2018';
     this.handleDateSelection = this.handleDateSelection.bind(this);
   }
   handleDateSelection(data) {

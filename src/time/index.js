@@ -36,7 +36,6 @@ class zcTimePicker extends HTMLElement {
   `;
   };
   handleTimeSelection(time) {
-    console.log('selected time --->', time)
     this.selectedTime = time;
     this.updateShadowDom()
   }

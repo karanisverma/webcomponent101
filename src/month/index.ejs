@@ -10,8 +10,9 @@
 
             ${repeat(this.dates, date=>html`
               <div 
-                class$="${this.selectedDate == `${this.month}/${date}/${this.year}` ? 'day selected' : 'day'}"
+                class$="${this.addClassNames(new Date(`${this.month}/${date}/${this.year}`))}"
                 on-click=${e => {this.handleDateSelection(date)}}
+                disabled$="${!this.isdateAllowed(new Date(`${this.month}/${date}/${this.year}`))}"
               >
                 ${date}
               </div>`)}

@@ -15,6 +15,8 @@ class zcMonthCalendar extends HTMLElement {
     'start-time',
     'end-time',
     'selected-date',
+    'min-date',
+    'max-date',
   ];
 }
   constructor() {
@@ -22,6 +24,8 @@ class zcMonthCalendar extends HTMLElement {
   }
   setProps() {
     this.startYear = this.getAttribute('start-year');
+    this.minDate = this.getAttribute('min-date') ? new Date(this.getAttribute('min-date')) : null;
+    this.maxDate = this.getAttribute('max-date') ? new Date(this.getAttribute('max-date')) : null ;
     this.endYear = this.getAttribute('end-year');
     this.startMonth = this.getAttribute('start-month');
     this.endMonth = this.getAttribute('end-month');
@@ -35,17 +39,17 @@ class zcMonthCalendar extends HTMLElement {
     this.monthLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.setProps = this.setProps.bind(this);
     this.handleDateSelection = this.handleDateSelection.bind(this)
+    this.isdateAllowed = this.isdateAllowed.bind(this)
+    this.addClassNames = this.addClassNames.bind(this)
     this.firstDay = new Date(this.year, this.month, 1);
     this.startingDay = this.firstDay.getDay();
     this.daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     this.monthLength = this.daysInMonth[this.month];
     if (this.month == 1) {
-      console.log('code under if condition', this.month)
       if ((this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0){
           this.monthLength = 29;
       }
   };
-  console.log('this.this.selectedDate-->', this.selectedDate)
   this.monthGridCount = this.monthLength + this.startingDay > 35 ? 42 : 35;
   this.dates =  Array.apply(null, { length: this.monthGridCount }).map((x, i) => {
     i = i+1;
@@ -53,7 +57,18 @@ class zcMonthCalendar extends HTMLElement {
     return date || '.'
   })
   }
-
+  addClassNames(date) {
+    let selectedDate = new Date(this.selectedDate)
+    let classNames = ['day',]
+    if(selectedDate.getTime() == date.getTime()) classNames.push('selected');
+    if(!this.isdateAllowed(date)) classNames.push('disabled');
+    return classNames.join(' ');
+  }
+  isdateAllowed(date) {
+    // if date range is not present idea is to enable all the dates.
+    // let isDateRangePresent = this.maxDate && this.minDate;
+    return (date >= this.minDate) && (date <= this.maxDate);
+  }
   get htmlTemplate () { 
     return html`
     <style>
@@ -65,10 +80,12 @@ class zcMonthCalendar extends HTMLElement {
   handleDateSelection(date) {
     this.selectedDate = date;
     date = `${this.month}/${date}/${this.year}`
-    console.log('date from Month wc-->', date)
-    this.dispatchEvent(new CustomEvent('date-tap', {bubbles: true, composed: true, detail:{
+    if(this.isdateAllowed(new Date(date))){
+      this.dispatchEvent(new CustomEvent('date-tap', {bubbles: true, composed: true, detail:{
       date: date,
     }}));
+    }
+
   }
   connectedCallback() {
     this.createShadowDom();
