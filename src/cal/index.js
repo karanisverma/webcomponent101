@@ -6,7 +6,11 @@ import { repeat } from '../lib/repeat.js';
 class zcCalendar extends HTMLElement {  
   static get observedAttributes() {
   return [
-    'visible-months'
+    'visible-months',
+    'min-date',
+    'max-date',
+    'min-time',
+    'max-time',
   ];
 }
   constructor() {
@@ -15,10 +19,10 @@ class zcCalendar extends HTMLElement {
     this.today = new Date();
     this.setProps = this.setProps.bind(this);
     this.selectedDate = '08/18/2018';
-    this.minDate = '08/10/2018';
-    this.maxDate = '10/10/2018';
-    this.minTime = '4:00';
-    this.maxTime = '10:00';
+    // this.minDate = '08/10/2018';
+    // this.maxDate = '10/10/2018';
+    // this.minTime = '4:00';
+    // this.maxTime = '10:00';
     this.handleDateSelection = this.handleDateSelection.bind(this);
   }
   handleDateSelection(data) {
@@ -26,6 +30,10 @@ class zcCalendar extends HTMLElement {
     this.updateShadowDom();
   }
   setProps() {
+    this.minDate = this.getAttribute('min-date');
+    this.maxDate = this.getAttribute('max-date');
+    this.minTime = this.getAttribute('min-time') || '00:00';
+    this.maxTime = this.getAttribute('max-time') || '23:30';
     this.visibleMonthCount = this.getAttribute('visible-months') || 6;
     this.months =  Array.apply(null, { length: this.visibleMonthCount }).map((x, i) => {
         var result = new Date(this.today);
