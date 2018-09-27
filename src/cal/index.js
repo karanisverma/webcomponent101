@@ -11,6 +11,7 @@ class zcCalendar extends HTMLElement {
     'max-date',
     'min-time',
     'max-time',
+    'selected-time'
   ];
 }
   constructor() {
@@ -18,12 +19,18 @@ class zcCalendar extends HTMLElement {
     this.mon = "1";
     this.today = new Date();
     this.setProps = this.setProps.bind(this);
-    this.selectedDate = '08/18/2018';
+    // this.selectedDate = '08/18/2018';
     // this.minDate = '08/10/2018';
     // this.maxDate = '10/10/2018';
     // this.minTime = '4:00';
     // this.maxTime = '10:00';
     this.handleDateSelection = this.handleDateSelection.bind(this);
+    this.handleTimeSelection = this.handleTimeSelection.bind(this);
+  }
+  handleTimeSelection(data) {
+    console.log('data-->', data)
+    this.selectedTime = data.detail.time;
+    this.updateShadowDom();
   }
   handleDateSelection(data) {
     this.selectedDate = data.detail.date;
@@ -33,6 +40,7 @@ class zcCalendar extends HTMLElement {
     this.minDate = this.getAttribute('min-date');
     this.maxDate = this.getAttribute('max-date');
     this.selectedDate = this.getAttribute('selected-date');
+    this.selectedTime = this.getAttribute('selected-time');
     this.minTime = this.getAttribute('min-time') || '00:00';
     this.maxTime = this.getAttribute('max-time') || '23:30';
     this.visibleMonthCount = this.getAttribute('visible-months') || 6;

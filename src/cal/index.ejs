@@ -21,7 +21,11 @@
             `)}
         </div>
         <div class="time-wrapper">
-            <zc-time-picker min-time$="${this.minTime}" max-time$="${this.maxTime}"></zc-time-picker>
+            <zc-time-picker 
+            on-time-tap=${data =>this.handleTimeSelection(data)}
+            selected-time$="${this.selectedTime}"
+            min-time$="${this.minTime}"
+            max-time$="${this.maxTime}"></zc-time-picker>
         </div>
     </div>
 
