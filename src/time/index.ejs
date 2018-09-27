@@ -8,10 +8,9 @@
 </head>
 <body>
     <div>
-        ${repeat(this.months, (month, i)=>html`
-        <zc-month-calendar start-year$="${month.getFullYear()}" start-month$="${month.getMonth()}"></zc-month-calendar>
-        `)}
-        <zc-time-picker></zc-time-picker>
+        ${repeat(this.timeList, (time, i)=>html`
+        <p>${time}</p>
+        `)} 
     </div>
 
 </body>

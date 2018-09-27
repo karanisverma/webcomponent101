@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="./polyfills/webcomponents-sd-ce.js"></script>
+    <script type="module" src="./dist/bundle-time-picker.js"></script>
 </head>
 <body>
-    <div>
-        ${repeat(this.months, (month, i)=>html`
-        <zc-month-calendar start-year$="${month.getFullYear()}" start-month$="${month.getMonth()}"></zc-month-calendar>
-        `)}
-        <zc-time-picker></zc-time-picker>
-    </div>
-
+   <zc-time-picker></zc-time-picker>  
 </body>
 </html>
