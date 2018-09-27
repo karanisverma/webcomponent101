@@ -9,7 +9,12 @@
 <body>
     <div class="time-containers">
         ${repeat(this.timeList, (time, i)=>html`
-        <p class="time">${time}</p>
+        <p 
+          class$="${this.selectedTime == time ? 'time selected' : 'time'}"
+          on-click=${e => {this.handleTimeSelection(time)}}
+        >
+          ${time}
+        </p>
         `)} 
     </div>
 

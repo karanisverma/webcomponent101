@@ -11,6 +11,8 @@ class zcTimePicker extends HTMLElement {
 }
   constructor() {
     super();
+    this.selectedTime = null;
+    this.handleTimeSelection = this.handleTimeSelection.bind(this);
     this.timeList = Array.apply(null, { length: 48 }).map((x, i) => {
       let temp = i;
       let ampm = 'AM';
@@ -33,7 +35,11 @@ class zcTimePicker extends HTMLElement {
     <%- html %>
   `;
   };
-
+  handleTimeSelection(time) {
+    console.log('selected time --->', time)
+    this.selectedTime = time;
+    this.updateShadowDom()
+  }
   connectedCallback() {
     this.createShadowDom();
   }
