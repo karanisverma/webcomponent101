@@ -10,7 +10,11 @@
     <div class="cal-wrapper">
         <div class="date-wrapper">
             ${repeat(this.months, (month, i)=>html`
-            <zc-month-calendar start-year$="${month.getFullYear()}" start-month$="${month.getMonth()}"></zc-month-calendar>
+            <zc-month-calendar 
+            on-date-tap= ${data => this.handleDateSelection(data)} 
+            start-year$="${month.getFullYear()}" 
+            start-month$="${month.getMonth()}"
+            selected-date$="${this.selectedDate}"></zc-month-calendar>
             `)}
         </div>
         <div class="time-wrapper">

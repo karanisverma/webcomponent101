@@ -14,6 +14,12 @@ class zcCalendar extends HTMLElement {
     this.mon = "1";
     this.today = new Date();
     this.setProps = this.setProps.bind(this);
+    this.selectedDate = 1;
+    this.handleDateSelection = this.handleDateSelection.bind(this);
+  }
+  handleDateSelection(data) {
+    this.selectedDate = data.detail.date;
+    this.updateShadowDom();
   }
   setProps() {
     this.visibleMonthCount = this.getAttribute('visible-months') || 6;

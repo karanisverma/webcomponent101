@@ -7,10 +7,10 @@
         </div>
     </div>
     <div class="days-containers">
-            
+
             ${repeat(this.dates, date=>html`
               <div 
-                class$="${this.selectedDate == parseInt(date) ? 'day selected' : 'day'}"
+                class$="${this.selectedDate == `${this.month}/${date}/${this.year}` ? 'day selected' : 'day'}"
                 on-click=${e => {this.handleDateSelection(date)}}
               >
                 ${date}

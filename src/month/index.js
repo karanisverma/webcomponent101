@@ -13,7 +13,8 @@ class zcMonthCalendar extends HTMLElement {
     'start-month',
     'end-month',
     'start-time',
-    'end-time'
+    'end-time',
+    'selected-date',
   ];
 }
   constructor() {
@@ -27,7 +28,7 @@ class zcMonthCalendar extends HTMLElement {
     this.startTime = this.getAttribute('start-time');
     this.endTime = this.getAttribute('end-time');
     this.today = new Date();
-    this.selectedDate = null;
+    this.selectedDate = this.getAttribute('selected-date') ? this.getAttribute('selected-date') : null;
     this.month = this.startMonth || this.today.getMonth();
     this.year  = this.startYear || this.today.getFullYear();
     this.weekDaysShortLabels = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -44,6 +45,7 @@ class zcMonthCalendar extends HTMLElement {
           this.monthLength = 29;
       }
   };
+  console.log('this.this.selectedDate-->', this.selectedDate)
   this.monthGridCount = this.monthLength + this.startingDay > 35 ? 42 : 35;
   this.dates =  Array.apply(null, { length: this.monthGridCount }).map((x, i) => {
     i = i+1;
@@ -62,7 +64,11 @@ class zcMonthCalendar extends HTMLElement {
   };
   handleDateSelection(date) {
     this.selectedDate = date;
-    this.updateShadowDom()
+    date = `${this.month}/${date}/${this.year}`
+    console.log('date from Month wc-->', date)
+    this.dispatchEvent(new CustomEvent('date-tap', {bubbles: true, composed: true, detail:{
+      date: date,
+    }}));
   }
   connectedCallback() {
     this.createShadowDom();
