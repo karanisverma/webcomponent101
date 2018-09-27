@@ -49,7 +49,6 @@ class zcMonthCalendar extends HTMLElement {
     let date = (i-this.startingDay > 0 && i-this.startingDay <= this.monthLength ? i-this.startingDay : false);
     return date || '.'
   })
-    console.log('this.startMonth-->', this.startMonth)
   }
 
   get htmlTemplate () { 

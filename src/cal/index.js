@@ -1,4 +1,5 @@
 import { html, render } from '../lib/lit-extended.js';
+import { directive } from '../lib/lit-html.js';
 import { repeat } from '../lib/repeat.js';
 
 
@@ -16,11 +17,8 @@ class zcCalendar extends HTMLElement {
   setProps() {
     this.visibleMonthCount = this.getAttribute('visible-months') || 6;
     this.months =  Array.apply(null, { length: this.visibleMonthCount }).map((x, i) => {
-        return `<zc-month-calendar start-year="2019" start-month=${i}></zc-month-calendar>`
+        return `<zc-month-calendar part=${i} start-year="2017" start-month=${i}></zc-month-calendar>`
       })
-    this.months = this.months.map(m => {
-        console.localStorage('m---->', m)
-        return html`${m}`})
     this.monthsTemplate = html`${this.months.join(' ')}`
 
   }
