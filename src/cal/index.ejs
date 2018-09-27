@@ -8,10 +8,14 @@
 </head>
 <body>
     <div class="cal-wrapper">
-        ${repeat(this.months, (month, i)=>html`
-        <zc-month-calendar start-year$="${month.getFullYear()}" start-month$="${month.getMonth()}"></zc-month-calendar>
-        `)}
-        <zc-time-picker></zc-time-picker>
+        <div class="date-wrapper">
+            ${repeat(this.months, (month, i)=>html`
+            <zc-month-calendar start-year$="${month.getFullYear()}" start-month$="${month.getMonth()}"></zc-month-calendar>
+            `)}
+        </div>
+        <div class="time-wrapper">
+            <zc-time-picker></zc-time-picker>
+        </div>
     </div>
 
 </body>
