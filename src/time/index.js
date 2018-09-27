@@ -3,27 +3,26 @@ import { directive } from '../lib/lit-html.js';
 import { repeat } from '../lib/repeat.js';
 
 
-class zcCalendar extends HTMLElement {  
+class zcTimePicker extends HTMLElement {  
   static get observedAttributes() {
   return [
-    'visible-months'
+    ''
   ];
 }
   constructor() {
     super();
-    this.mon = "1";
-    this.today = new Date();
-    this.setProps = this.setProps.bind(this);
+    this.timeList = Array.apply(null, { length: 48 }).map((x, i) => {
+      let temp = i;
+      let ampm = 'AM';
+      if (i >= 24) {
+        temp = i - 24;
+        ampm = 'PM';
+      }
+      return temp % 2 ? `${(temp + 1) / 2}:30 ${ampm}` : `${temp / 2 + 1}:00 ${ampm}`;
+    })
   }
   setProps() {
-    this.visibleMonthCount = this.getAttribute('visible-months') || 6;
-    this.months =  Array.apply(null, { length: this.visibleMonthCount }).map((x, i) => {
-        var result = new Date(this.today);
-        result.setDate(1);
-        result.setMonth(i+this.today.getMonth())
-        return result
-      })
-    this.monthsTemplate = html`${this.months.join(' ')}`
+    // this.visibleMonthCount = this.getAttribute('visible-months') || 6;
   }
 
   get htmlTemplate () { 
@@ -55,4 +54,4 @@ class zcCalendar extends HTMLElement {
   }
 }
 
-window.customElements.define('zc-calendar', zcCalendar);
+window.customElements.define('zc-time-picker', zcTimePicker);

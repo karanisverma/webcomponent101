@@ -28,4 +28,22 @@ const scriptStringCal = ejs.render(scriptCal, { style: styleStringCal, html: htm
 
 fs.writeFileSync('./dist/bundle.js', scriptStringCal);
 
+
+
+
+const htmlTime = fs.readFileSync('./src/time/index.ejs').toString().trim();
+const styleTime = fs.readFileSync('./src/time/index.scss').toString().trim();
+const scriptTime = fs.readFileSync('./src/time/index.js').toString().trim();
+const htmlStringTime = ejs.render(htmlTime, {}, {});
+const styleStringTime = sass.renderSync({
+  data: styleTime,
+  outputStyle: 'compressed',
+}).css.toString();
+const scriptStringTime = ejs.render(scriptTime, { style: styleStringTime, html: htmlStringTime }, {});
+
+fs.writeFileSync('./dist/bundle-time-picker.js', scriptStringTime);
+
+
+
+
 console.log('merging files is done');
