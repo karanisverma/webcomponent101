@@ -27,12 +27,13 @@ class zcMonthCalendar extends HTMLElement {
     this.startTime = this.getAttribute('start-time');
     this.endTime = this.getAttribute('end-time');
     this.today = new Date();
-
+    this.selectedDate = null;
     this.month = this.startMonth || this.today.getMonth();
     this.year  = this.startYear || this.today.getFullYear();
     this.weekDaysShortLabels = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     this.monthLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.setProps = this.setProps.bind(this);
+    this.handleDateSelection = this.handleDateSelection.bind(this)
     this.firstDay = new Date(this.year, this.month, 1);
     this.startingDay = this.firstDay.getDay();
     this.daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -59,7 +60,10 @@ class zcMonthCalendar extends HTMLElement {
     <%- html %>
   `;
   };
-
+  handleDateSelection(date) {
+    this.selectedDate = date;
+    this.updateShadowDom()
+  }
   connectedCallback() {
     this.createShadowDom();
   }

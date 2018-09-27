@@ -7,7 +7,14 @@
         </div>
     </div>
     <div class="days-containers">
-            ${repeat(this.dates, date=>html`<div class="day">${date}</div>`)}
+            
+            ${repeat(this.dates, date=>html`
+              <div 
+                class$="${this.selectedDate == parseInt(date) ? 'day selected' : 'day'}"
+                on-click=${e => {this.handleDateSelection(date)}}
+              >
+                ${date}
+              </div>`)}
     </div>
 </div>
 </div>

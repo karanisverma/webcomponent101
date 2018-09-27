@@ -32,6 +32,13 @@
                 cursor: pointer;
                 border-radius: 50px;
             }
+            &.selected{
+                color: white;
+                transition: 0.2s;
+                background: #B4D3A2;
+                cursor: pointer;
+                border-radius: 50px;            
+            }
         }
     }
 }
