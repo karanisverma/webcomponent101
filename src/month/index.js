@@ -66,8 +66,8 @@ class zcMonthCalendar extends HTMLElement {
   }
   isdateAllowed(date) {
     let isValidDate = isNaN(date.getTime()) ?  false : true;
-    if(!isValidDate) return false;
-
+    if(!isValidDate) return false
+    
     // if date range is not present idea is to enable all the dates.
     let isDateRangePresent = this.maxDate && this.minDate;
     return isDateRangePresent && isValidDate ? (date >= this.minDate) && (date <= this.maxDate) : true;

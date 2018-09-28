@@ -19,22 +19,24 @@ class zcCalendar extends HTMLElement {
     this.mon = "1";
     this.today = new Date();
     this.setProps = this.setProps.bind(this);
-    // this.selectedDate = '08/18/2018';
-    // this.minDate = '08/10/2018';
-    // this.maxDate = '10/10/2018';
-    // this.minTime = '4:00';
-    // this.maxTime = '10:00';
     this.handleDateSelection = this.handleDateSelection.bind(this);
     this.handleTimeSelection = this.handleTimeSelection.bind(this);
   }
   handleTimeSelection(data) {
-    console.log('data-->', data)
     this.selectedTime = data.detail.time;
+    this.dispatchDateTimeChange();
     this.updateShadowDom();
   }
   handleDateSelection(data) {
     this.selectedDate = data.detail.date;
+    this.dispatchDateTimeChange();
     this.updateShadowDom();
+  }
+  dispatchDateTimeChange(){
+    this.dispatchEvent(new CustomEvent('datetime-change', {bubbles: true, composed: true, detail:{
+      time: this.selectedTime,
+      date: this.selectedDate
+    }}));
   }
   setProps() {
     this.minDate = this.getAttribute('min-date');

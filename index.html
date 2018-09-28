@@ -16,10 +16,15 @@
     visible-months="6" 
     min-time="00:00" 
     max-time="12:00"
-    selected-date='08/15/2018'
+    selected-date='09/15/2018'
     selected-time='11:00 AM'
-    min-date="08/10/2018"
-    max-date="10/12/2018"
+    min-date="08/05/2018"
+    max-date="10/15/2018"
     ></zc-calendar>
 </body>
+<script>
+    document.getElementsByTagName('zc-calendar')[0].addEventListener('datetime-change', (data) => {
+        console.log('data---->', data)
+    });
+</script>
 </html>
